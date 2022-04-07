@@ -5,130 +5,164 @@ package DataStructures.LinkedList;
 public class LinkedList {
 
     Node head;
+    int count;
 
     static class Node {
+
         int data;
         Node next;
 
-        Node() {
-
-        }
-
-        Node(int d) {
-            data = d;
+        Node(int data) {
+            this.data = data;
             next = null;
         }
     }
 
-    private static Node createNode(int data) {
-        return new Node(data);
-    }
-
     /**
-     * Inserts new node to the Linked-list
-     *
-     * @param data
      * @param list
-     * @return LinkedList
+     * @param data
      */
-    private static LinkedList insert(int data, LinkedList list) {
+    public static void insert(LinkedList list, int data) {
 
         // Create new Node
         Node newNode = createNode(data);
-        ;
-        newNode.next = null;
 
-        // Check if list is empty
+        // Check is list head is null
         if (list.head == null) {
             list.head = newNode;
         } else {
-
-            // Traverse the list and add new Node
-
             Node last = list.head;
 
             while (last.next != null) {
                 last = last.next;
             }
-
-            // Add new node after last node
             last.next = newNode;
         }
-        return list;
     }
 
     /**
-     * Prints the Linked-list
-     *
      * @param list
      */
-    private static void print(LinkedList list) {
+    public static void delete(LinkedList list) {
 
+        Node temp = list.head;
+
+        if (list.head == null) {
+            System.out.println("LinkedList is empty");
+        } else {
+            int i = 0;
+            // Traverse till list (len - 1) position
+            while (i < list.count - 1) {
+                temp = temp.next;
+                i++;
+            }
+
+            // Update the next to null
+
+            temp.next = null;
+
+        }
+    }
+
+    /**
+     * @param list
+     * @param position
+     * @return
+     */
+    public static boolean deleteByPosition(LinkedList list, int position) {
+
+        Node temp = list.head;
+
+        if (position == 0 || position > list.count) {
+            System.out.println("Invalid Position");
+            return false;
+        } else if (position == 1) {
+            list.head = temp.next;
+            temp.next = null;
+        } else {
+            int i = 1;
+
+            while (i < position - 1) {
+                temp = temp.next;
+                i++;
+            }
+
+            // Update the reference(link) of position -1 Node
+            Node temp1 = temp.next;
+            temp.next = temp1.next;
+
+
+            // Make pos Node reference(link) as null
+            temp1.next = null;
+        }
+        return true;
+    }
+
+    /**
+     * @param list
+     * @param data
+     * @param position
+     */
+    public static void insertAt(LinkedList list, int data, int position) {
+
+        // Create Node
+        Node newNode = createNode(data);
+
+        if (position == 0 || position > list.count) {
+            System.out.println("Invalid position");
+        } else if (position == 1) {
+            newNode.next = list.head;
+            list.head = newNode;
+        } else {
+
+            // Traverse till position and add node
+
+            Node temp = list.head;
+            int i = 1;
+
+            while (i < position - 1) {
+                temp = temp.next;
+                i++;
+            }
+
+            newNode.next = temp.next;
+            temp.next = newNode;
+        }
+    }
+
+
+    /**
+     * @param list
+     */
+    public static void printList(LinkedList list) {
         Node currentNode = list.head;
 
-        System.out.println("Linked list : ");
+        System.out.println("Linked List");
 
-        int i = 0;
         while (currentNode != null) {
-            System.out.println("Node" + i + "(Data : " + currentNode.data + ", next : " + currentNode.next + ")");
-            i++;
+            System.out.println("Node(Data: " + currentNode.data + ", next: " + currentNode.next + ")");
             currentNode = currentNode.next;
         }
     }
 
     /**
-     * Insert new node at specific position
-     *
-     * @param position
      * @param data
-     * @param list
+     * @return
      */
-    private static void insertAt(int position, int data, LinkedList list) {
-
-        // Create new node
-        Node newNode = createNode(data);
-
-        // Check if list is empty
-        if (list.head == null) {
-            list.head = newNode;
-        } else if (position < 1) {
-            // If position is less than 1
-            System.out.println("Please select position greater than 1");
-        } else if (position == 1) {
-            // If list has only one node
-            // Insert new node before head node
-            newNode.next = list.head;
-            list.head = newNode;
-        } else {
-            Node tempNode = list.head;
-
-            // Traverse till position -1 node
-            for (int i = 1; i < position - 1; i++) {
-                if (tempNode != null) {
-                    tempNode = tempNode.next;
-                }
-            }
-
-            // Assign newNode next as tempNode next address
-            newNode.next = tempNode.next;
-            tempNode.next = newNode;
-
-        }
+    public static Node createNode(int data) {
+        return new Node(data);
     }
 
     /**
-     * Returns reversed Linked-list
-     *
      * @param list
-     * @return LinkedList
      */
-    private static LinkedList reverseList(LinkedList list) {
+    public static void reverseList(LinkedList list) {
 
-        // Create 3 pointers
+        // Initialize pointers
         Node previousNode = null;
-        Node currentNode = list.head;
-        Node nextNode = list.head;
+        Node currentNode = list.head, nextNode = list.head;
 
+        // Traverse through list and update pointers
         while (nextNode != null) {
             nextNode = nextNode.next;
             currentNode.next = previousNode;
@@ -137,106 +171,55 @@ public class LinkedList {
         }
 
         list.head = previousNode;
-
-        return list;
     }
 
-    /**
-     * Add Two linked-list
-     *
-     * @param l1
-     * @param l2
-     * @return Node
-     */
+    public void getLength() {
+        Node temp = head;
 
-    private static Node addTwoNumbers(Node l1, Node l2) {
-
-        int v1 = 0, v2 = 0, sum = 0, carry = 0;
-        Node sumHead = new Node(-1);
-        Node ptr = sumHead;
-
-        while (l1 != null || l2 != null) {
-
-            if (l1 != null) {
-                v1 = l1.data;
-                l1 = l1.next;
-            } else v1 = 0;
-
-            if (l2 != null) {
-                v2 = l2.data;
-                l2 = l2.next;
-            } else v2 = 0;
-
-            sum = v1 + v2 + carry;
-            carry = sum / 10;
-            sum = sum % 10;
-
-            ptr.next = new Node(sum);
-            ptr = ptr.next;
+        while (temp != null) {
+            temp = temp.next;
+            count++;
         }
-
-        if (carry != 0) {
-            ptr.next = new Node(carry);
-        }
-        return sumHead.next;
     }
-
 
     public static void main(String[] args) {
 
         LinkedList list = new LinkedList();
 
-        for (int i = 1; i < 5; i++) {
-            insert(i, list);
+        insert(list, 1);
+        insert(list, 2);
+        insert(list, 3);
+        insert(list, 4);
+        insert(list, 5);
+        insert(list, 6);
+
+        printList(list);
+
+        list.getLength();
+
+        System.out.println(list.count);
+
+        System.out.println("After inserting");
+
+        insertAt(list, 100, 4);
+
+        printList(list);
+
+        System.out.println("Deleting last node \n");
+
+        delete(list);
+
+        printList(list);
+
+        if (deleteByPosition(list, 5)) {
+            printList(list);
         }
 
-        print(list);
+        System.out.println("After reversing list \n");
 
-        System.out.println("----------------InsertAt----------------------");
-
-        insertAt(3, 100, list);
-
-        print(list);
-
-        System.out.println("----------------ReverseList----------------------");
 
         reverseList(list);
 
-        print(list);
-
-        System.out.println("----------------Add Two Numbers----------------------");
-
-        LinkedList list1 = new LinkedList();
-        LinkedList list2 = new LinkedList();
-
-        insert(9, list1);
-        insert(9, list1);
-        insert(9, list1);
-        insert(9, list1);
-        insert(9, list1);
-        insert(9, list1);
-        insert(9, list1);
-
-
-        insert(9, list2);
-        insert(9, list2);
-        insert(9, list2);
-        insert(9, list2);
-
-
-        print(list1);
-        print(list2);
-
-        Node l1 = list1.head;
-        Node l2 = list2.head;
-
-        Node n = addTwoNumbers(l1, l2);
-
-        while (n != null) {
-            System.out.print(n.data);
-            n = n.next;
-        }
-
-
+        printList(list);
     }
 }

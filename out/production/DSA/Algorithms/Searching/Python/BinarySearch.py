@@ -5,7 +5,7 @@ x = int(x)
 length = len(arr)
 
 
-def search(arr, left, right):
+def recursiveSearch(arr, left, right):
     if right >= left:
 
         mid = left + (right - left) // 2
@@ -14,16 +14,32 @@ def search(arr, left, right):
             return mid
 
         elif arr[mid] > x:
-            return search(arr, left, mid - 1)
+            return recursiveSearch(arr, left, mid - 1)
 
         else:
-            return search(arr, mid + 1, right)
+            return recursiveSearch(arr, mid + 1, right)
 
     else:
         return -1
 
 
-pos = search(arr, 0, length - 1)
+def iterativeSearch(arr, left, right):
+    while left <= right:
+
+        mid = left + (right - left) // 2
+
+        if arr[mid] == x:
+            return mid
+
+        if arr[mid] < x:
+            left = left + 1
+        else:
+            right = right - 1
+
+    return -1
+
+
+pos = iterativeSearch(arr, 0, length - 1)
 
 if pos == -1:
     print("Element not found")
