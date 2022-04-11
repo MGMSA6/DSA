@@ -1,8 +1,9 @@
-package DataStructures.Arrays;
+package DataStructures.Arrays.Java;
 
 import java.util.Scanner;
 
 // Java program to implement arrays
+// Time and Space complexity is O(n) space
 public class Arrays {
 
     static int[] arr;

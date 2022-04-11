@@ -1,4 +1,4 @@
-package Problems;
+package Problems.Java;
 
 /**
  * Given an array A[] of n numbers and another number x,
@@ -35,7 +35,6 @@ public class FindPair {
                 }
             }
         }
-
         return false;
     }
 }

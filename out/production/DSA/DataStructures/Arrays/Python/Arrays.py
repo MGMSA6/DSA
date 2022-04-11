@@ -1,3 +1,6 @@
+
+
+# Time and Space complexity is O(n) space
 class Arrays:
 
     def findElement(self, key):

@@ -1,18 +1,20 @@
-package DataStructures.LinkedList;
+package DataStructures.LinkedList.Java;
 
 // Java program to implement
 // a Singly Linked List
+// Time complexity of linked list is O(n) for traversing
+// Space complexity is O(n)
 public class LinkedList {
 
-    Node head;
+    public Node head;
     int count;
 
-    static class Node {
+    public static class Node {
 
-        int data;
-        Node next;
+        public int data;
+        public Node next;
 
-        Node(int data) {
+        public Node(int data) {
             this.data = data;
             next = null;
         }
@@ -173,13 +175,16 @@ public class LinkedList {
         list.head = previousNode;
     }
 
-    public void getLength() {
-        Node temp = head;
+    public int getLength(LinkedList list) {
+        int count = 0;
+        Node temp = list.head;
 
         while (temp != null) {
             temp = temp.next;
             count++;
         }
+
+        return count;
     }
 
     public static void main(String[] args) {
@@ -195,7 +200,7 @@ public class LinkedList {
 
         printList(list);
 
-        list.getLength();
+        list.getLength(list);
 
         System.out.println(list.count);
 
@@ -216,7 +221,6 @@ public class LinkedList {
         }
 
         System.out.println("After reversing list \n");
-
 
         reverseList(list);
 
