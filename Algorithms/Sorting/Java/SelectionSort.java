@@ -1,7 +1,7 @@
 package Algorithms.Sorting.Java;
 
 // Time complexity is O(n^2)
-// Space complexity is 1
+// Space complexity is O(1)
 
 import java.util.Arrays;
 

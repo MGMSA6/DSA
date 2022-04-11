@@ -2,6 +2,10 @@ package Algorithms.Sorting.Java;
 
 import java.util.Arrays;
 
+
+// Time complexity is O(n^2)
+// Space complexity is O(1)
+
 public class BubbleSort {
 
     static int[] arr = {5, 4, 3, 2, 1};

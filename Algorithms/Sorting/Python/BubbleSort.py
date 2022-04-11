@@ -1,3 +1,6 @@
+# Time complexity is O(n^2)
+# Space complexity is O(1)
+
 class BubbleSort:
     array = [5, 4, 3, 2, 1]
 
