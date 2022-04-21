@@ -1,3 +1,5 @@
+# Time complexity : O(n*logn)
+# Space complexity : O(log n)
 class QuickSort:
     arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
@@ -5,17 +7,21 @@ class QuickSort:
         if low < high:
             pi = self.partition(self, self.arr, low, high)
 
+            # All elements before pi are smaller
             self.sort(low, pi - 1)
+
+            # All Elements after pi are greater
             self.sort(pi + 1, high)
 
     @staticmethod
     def partition(self, arr, low, high):
 
-        pivot = self.arr[high]
+        # Pivot element
+        pivot = arr[high]
 
         i = (low - 1)
-        j = low
 
+        j = low
         while j <= high - 1:
             if arr[j] <= pivot:
                 i += 1

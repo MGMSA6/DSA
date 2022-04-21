@@ -51,7 +51,7 @@ public class BinarySearch {
             }
 
             if (arr[mid] > num) {
-                return recursiveSearch(arr, left, right - 1);
+                return recursiveSearch(arr, left, mid - 1);
             }
 
             return recursiveSearch(arr, mid + 1, right);

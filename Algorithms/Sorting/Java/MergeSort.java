@@ -18,6 +18,11 @@ public class MergeSort {
 
     }
 
+    /**
+     * @param arr
+     * @param l
+     * @param r
+     */
     public static void mergeSort(int[] arr, int l, int r) {
 
         // Base case
@@ -37,6 +42,12 @@ public class MergeSort {
         }
     }
 
+    /**
+     * @param arr
+     * @param l
+     * @param mid
+     * @param r
+     */
     public static void merge(int[] arr, int l, int mid, int r) {
 
         // Define 3 variables
@@ -73,6 +84,5 @@ public class MergeSort {
         for (i = l; i <= r; i++) {
             arr[i] = arr1[i - l];
         }
-
     }
 }
