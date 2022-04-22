@@ -5,41 +5,43 @@ x = int(x)
 length = len(arr)
 
 
-def recursiveSearch(arr, left, right):
-    if right >= left:
+class BinarySearch:
+    def recursiveSearch(self, arr, left, right, target):
+        if right >= left:
 
-        mid = left + (right - left) // 2
+            mid = left + (right - left) // 2
 
-        if arr[mid] == x:
-            return mid
+            if arr[mid] == target:
+                return mid
 
-        elif arr[mid] > x:
-            return recursiveSearch(arr, left, mid - 1)
+            elif arr[mid] > target:
+                return self.recursiveSearch(arr, left, mid - 1)
+
+            else:
+                return self.recursiveSearch(arr, mid + 1, right)
 
         else:
-            return recursiveSearch(arr, mid + 1, right)
+            return -1
 
-    else:
+    def iterativeSearch(self, arr, left, right, target):
+        while left <= right:
+
+            mid = left + (right - left) // 2
+
+            if arr[mid] == target:
+                return mid
+
+            if arr[mid] < target:
+                left = left + 1
+            else:
+                right = right - 1
+
         return -1
 
 
-def iterativeSearch(arr, left, right):
-    while left <= right:
+obj = BinarySearch()
 
-        mid = left + (right - left) // 2
-
-        if arr[mid] == x:
-            return mid
-
-        if arr[mid] < x:
-            left = left + 1
-        else:
-            right = right - 1
-
-    return -1
-
-
-pos = iterativeSearch(arr, 0, length - 1)
+pos = obj.iterativeSearch(arr, 0, length - 1, x)
 
 if pos == -1:
     print("Element not found")
