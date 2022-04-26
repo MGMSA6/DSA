@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class BinarySearch {
 
     static int[] arr = {2, 3, 4, 10, 40};
+    static int[] arr1 = {50, 40, 30, 20, 10};
+
     static int len = arr.length;
     static int num;
     static int position;
@@ -27,8 +29,6 @@ public class BinarySearch {
         } else {
             System.out.println("Number found in array at position " + (position + 1));
         }
-
-
     }
 
     /**
@@ -78,10 +78,11 @@ public class BinarySearch {
                 return mid;
             }
 
-            if (arr[mid] < num) {
-                left = left + 1;
-            } else {
+            if (arr[mid] > num) {
                 right = mid - 1;
+
+            } else {
+                left = mid + 1;
             }
         }
         return -1;

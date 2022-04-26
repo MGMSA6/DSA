@@ -92,7 +92,7 @@ class Linkedlist:
 
     def getLength(self):
 
-        temp = self.head
+        temp = list.head
 
         while temp is not None:
             temp = temp.next
