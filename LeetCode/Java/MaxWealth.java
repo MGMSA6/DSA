@@ -1,4 +1,7 @@
-package LeetCode;
+package LeetCode.Java;
+
+// Question
+// https://leetcode.com/problems/richest-customer-wealth/
 
 public class MaxWealth {
 

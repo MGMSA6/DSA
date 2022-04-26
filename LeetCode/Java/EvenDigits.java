@@ -1,4 +1,7 @@
-package LeetCode;
+package LeetCode.Java;
+
+// Question
+// https://leetcode.com/problems/find-numbers-with-even-number-of-digits/
 
 public class EvenDigits {
 
@@ -7,7 +10,9 @@ public class EvenDigits {
 
     public static void main(String[] args) {
 
-        System.out.println(findNumbers(arr));
+        //System.out.println(findNumbers(arr));
+
+        System.out.println(digit1(1771));
 
     }
 

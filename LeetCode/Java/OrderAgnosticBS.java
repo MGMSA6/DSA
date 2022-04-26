@@ -1,4 +1,7 @@
-package LeetCode;
+package LeetCode.Java;
+
+// Question
+// https://leetcode.com/problems/binary-search/
 
 public class OrderAgnosticBS {
 
@@ -47,7 +50,6 @@ public class OrderAgnosticBS {
                     left = mid + 1;
                 }
             }
-
         }
         return -1;
     }
