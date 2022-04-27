@@ -1,12 +1,27 @@
 import math
-arr = [555, 901, 482, 1771]
+
+arr = [555, 91, 42, 1771]
 
 
 def digit(num):
     if num < 0:
         num *= -1
 
-    return math.log10(num)
+    return int(math.log10(num)) + 1
 
 
-print(digit(482))
+def even(num):
+    n = digit(num)
+
+    return n % 2 == 0
+
+
+def findNumbers(arr):
+    count = 0
+    for i in arr:
+        if even(i):
+            count += 1
+    return count
+
+
+print(findNumbers(arr))
