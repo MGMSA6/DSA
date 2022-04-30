@@ -38,3 +38,5 @@ public class MaxWealth {
         return maxWealth;
     }
 }
+
+
