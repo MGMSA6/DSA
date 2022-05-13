@@ -15,7 +15,7 @@ def nextGreatestLetter(letters, target):
         else:
             start = mid + 1
 
-        return letters[target % len(letters)]
+        return letters[start % len(letters)]
 
 
 print(nextGreatestLetter(letters, target))

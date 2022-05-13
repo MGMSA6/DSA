@@ -3,6 +3,7 @@ target = 15
 
 
 # The floor is the greatest element smaller than or equal to x
+
 def findFloor():
     start = 0
     end = len(arr) - 1

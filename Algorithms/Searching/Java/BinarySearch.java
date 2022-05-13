@@ -77,7 +77,6 @@ public class BinarySearch {
             if (arr[mid] == num) {
                 return mid;
             }
-
             if (arr[mid] > num) {
                 right = mid - 1;
 
