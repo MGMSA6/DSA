@@ -3,6 +3,7 @@ package LeetCode.Java;
 import java.util.Arrays;
 
 // https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/submissions/
+// Find first and last occurrence of the target element
 
 public class FirstandLastPosition {
 
@@ -11,7 +12,7 @@ public class FirstandLastPosition {
 
 
     static int len = arr.length;
-    static int target = 11;
+    static int target = 7;
 
     public static void main(String[] args) {
 
