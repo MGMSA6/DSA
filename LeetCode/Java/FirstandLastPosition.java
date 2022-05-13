@@ -22,17 +22,17 @@ public class FirstandLastPosition {
     public static int[] searchRange(int[] arr, int target) {
         int[] ans = {-1, -1};
 
-        int start = search(target, arr, true);
-        int end = search(target, arr, false);
+        ans[0] = search(target, arr, true);
 
-        ans[0] = start;
-        ans[1] = end;
+        if (ans[0] != -1) {
+            ans[1] = search(target, arr, false);
+        }
 
         return ans;
     }
 
     static int search(int target, int[] arr, boolean findFirst) {
-        
+
         int ans = -1;
         int l = 0;
         int r = len - 1;
