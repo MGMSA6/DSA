@@ -19,7 +19,7 @@ public class FirstandLastPosition {
 
     }
 
-    public static int[] searchRange(int arr[], int target) {
+    public static int[] searchRange(int[] arr, int target) {
         int[] ans = {-1, -1};
 
         int start = search(target, arr, true);
@@ -32,16 +32,13 @@ public class FirstandLastPosition {
     }
 
     static int search(int target, int[] arr, boolean findFirst) {
-
+        
         int ans = -1;
-
         int l = 0;
         int r = len - 1;
 
         while (l <= r) {
-
             int mid = l + (r - l) / 2;
-
             if (target > arr[mid]) {
                 l = mid + 1;
             } else if (target < arr[mid]) {
